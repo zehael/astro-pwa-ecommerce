@@ -1,4 +1,4 @@
-import { Card, Divider } from "antd";
+import { Button, Card, Divider } from "antd";
 import type { FC } from "react";
 import type { IProduct } from "../../types/product";
 import s from "./Product.module.scss";
@@ -11,7 +11,7 @@ const ProductCard: FC<ProductCardProdps> = ({ product }) => {
   return (
     <Card
       className={s.card}
-      bordered
+      bordered={false}
       cover={
          <img className={s.card__image} alt={product.title} src={product.image} />
       }
@@ -19,6 +19,11 @@ const ProductCard: FC<ProductCardProdps> = ({ product }) => {
       <Card.Meta title={product.title} />
      <div className={s.card__description}>
       {product.description}
+     </div>
+     <div className={s.card__actions}>
+      <a href={`/product/${product.id}`}>
+        <Button type='primary' block>Details</Button>
+      </a>
      </div>
     </Card>
   );

@@ -3,6 +3,12 @@
 .card {
   height: 100%;
   box-shadow: $shadow-sm;
+  cursor: inherit;
+
+  &:hover {
+    box-shadow: $shadow-md !important;
+  }
+
   &__image {
     display: block;
     width: 100%;
@@ -21,5 +27,11 @@
     margin-top: 1rem;
     background: linear-gradient(180deg, transparent, #fff 50%);
     color: darken($gray, 20%);
+    cursor: default;
+    transition: all .2s ease-in-out;
+  }
+
+  &__actions {
+    margin-top: 2.4rem;
   }
 }
