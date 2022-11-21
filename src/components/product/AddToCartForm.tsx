@@ -27,9 +27,9 @@ const AddToCartForm: FC<AddToCartFormProps> = ({ product }) => {
   }
 
   return (
-    <Space direction='vertical' align='end'>
+    <Space size='middle' direction='vertical' align='end'>
       <GoBackButton />
-      <Button onClick={addToCart}>Add to cart</Button>
+      <Button size='large' type='primary' onClick={addToCart}>Add to cart</Button>
     </Space>
   );
 };

@@ -24,10 +24,11 @@ const CartDrawer = () => {
     }
   };
 
+
   return (
     <>
       <Drawer
-        title="Basic Drawer"
+        title="Cart"
         placement="right"
         onClose={onClose}
         open={$isCartOpen}

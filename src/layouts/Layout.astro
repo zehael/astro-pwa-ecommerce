@@ -3,6 +3,7 @@ import AppNavigation from "../components/app/AppNavigation";
 import "antd/dist/reset.css";
 import "/src/styles/main.scss";
 import CartDrawer from "../components/cart/CartDrawer";
+import CartInHeader from "../components/cart/CartInHeader";
 
 export interface Props {
   title: string;
@@ -35,7 +36,10 @@ const { title, pageName } = Astro.props;
   <body>
     <header class="header">
       <div class="container">
-        <AppNavigation pageName={pageName} />
+        <div class="header__content">
+          <AppNavigation pageName={pageName} />
+          <CartInHeader client:load />
+        </div>
       </div>
     </header>
     <main>
@@ -61,6 +65,12 @@ const { title, pageName } = Astro.props;
     height: 4.8rem;
     background: $white;
     box-shadow: $shadow-md;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   main {
