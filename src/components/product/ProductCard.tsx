@@ -22,7 +22,7 @@ const ProductCard: FC<ProductCardProdps> = ({ product }) => {
      </div>
      <div className={s.card__actions}>
       <a href={`/product/${product.id}`}>
-        <Button type='primary' block>Details</Button>
+        <Button type='primary' block>$ {product.price} Buy</Button>
       </a>
      </div>
     </Card>

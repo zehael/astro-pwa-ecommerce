@@ -10,7 +10,7 @@ export type CartItem = {
 
 export const isCartOpen = atom<boolean>(false);
 
-export const cartItems =persistentAtom<CartItem[]>('cartItems', [], {
+export const cartItems = persistentAtom<CartItem[]>('cartItems', [], {
   encode: JSON.stringify,
   decode: JSON.parse,
 });

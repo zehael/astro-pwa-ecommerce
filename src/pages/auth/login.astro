@@ -1,0 +1,14 @@
+---
+import LoginForm from "../../components/auth/LoginForm";
+import Layout from "../../layouts/Layout.astro";
+
+---
+
+<Layout title="Login page" pageName="login">
+<div class="container">
+  <div class="page mt-5">
+    <h1>Login page</h1>
+    <LoginForm client:load />
+  </div>
+</div>
+</Layout>

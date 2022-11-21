@@ -4,6 +4,7 @@ import "antd/dist/reset.css";
 import "/src/styles/main.scss";
 import CartDrawer from "../components/cart/CartDrawer";
 import CartInHeader from "../components/cart/CartInHeader";
+import { checkAuth } from "../lib/api";
 
 export interface Props {
   title: string;
@@ -11,6 +12,14 @@ export interface Props {
 }
 
 const { title, pageName } = Astro.props;
+const $isAuth = true;
+
+const checkUserIsAuth = async (): Promise<boolean> => {
+  const isAuth = await checkAuth();
+  return isAuth;
+}
+
+const isAuth = await checkUserIsAuth();
 ---
 
 <!DOCTYPE html>
@@ -37,7 +46,7 @@ const { title, pageName } = Astro.props;
     <header class="header">
       <div class="container">
         <div class="header__content">
-          <AppNavigation pageName={pageName} />
+          <AppNavigation client:load pageName={pageName} isAuth={isAuth} />
           <CartInHeader client:load />
         </div>
       </div>
