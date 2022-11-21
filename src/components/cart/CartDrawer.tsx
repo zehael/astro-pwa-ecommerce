@@ -1,34 +1,74 @@
-import { Button, Card, Drawer } from 'antd';
-import React, { useState } from 'react';
-import { useStore } from '@nanostores/react';
-import { cartItems, isCartOpen, setCartOpen } from '../../store/cartStore';
-import { DeleteOutlined } from '@ant-design/icons';
+import { Button, Card, Drawer, Empty, Popconfirm } from "antd";
+import React, { useState } from "react";
+import { useStore } from "@nanostores/react";
+import { addCartItem, cartItems, isCartOpen } from "../../store/cartStore";
+import { DeleteOutlined } from "@ant-design/icons";
+import CartQtyHandler from "./CartQtyHandler";
 
 const CartDrawer = () => {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
 
   const showDrawer = () => {
-    setCartOpen(true);
+    isCartOpen.set(true);
   };
 
   const onClose = () => {
-    setCartOpen(false);
+    isCartOpen.set(false);
+  };
+
+  const onRemove = (id: number | string) => {
+    const cartItem = $cartItems.find((item) => item.id === id);
+    if (cartItem) {
+      addCartItem({ ...cartItem, quantity: 0 });
+    }
   };
 
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button>
-      <Drawer title="Basic Drawer" placement="right" onClose={onClose} open={$isCartOpen}>
-        {Object.values($cartItems).length ? (
+      <Drawer
+        title="Basic Drawer"
+        placement="right"
+        onClose={onClose}
+        open={$isCartOpen}
+      >
+        {$cartItems.length > 0 && (
           <div>
-           {Object.values($cartItems).map((item) => (<Card extra={<Button type='link' icon={<DeleteOutlined />} danger />} key={item.id}>
-            {item.name}
-           </Card>))}
+            {$cartItems.map((item) => (
+              <Card
+                size="small"
+                title={item.name}
+                extra={
+                  <Popconfirm
+                    placement="left"
+                    title="Убрать товар из корзины"
+                    onConfirm={() => onRemove(item.id)}
+                    okText="Да"
+                    cancelText="Нет"
+                  >
+                    <Button
+                      type="link"
+                      icon={<DeleteOutlined />}
+                      danger
+                    />
+                  </Popconfirm>
+                }
+                key={item.id}
+              >
+                <CartQtyHandler cartItem={item} />
+              </Card>
+            ))}
           </div>
-        ) : null}
+        )}
+        {$cartItems.length === 0 && (
+          <Empty
+            description={
+              <span>
+                Go to <a href="/">products page</a>.
+              </span>
+            }
+          />
+        )}
       </Drawer>
     </>
   );

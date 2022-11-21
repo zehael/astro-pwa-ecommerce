@@ -25,7 +25,7 @@ const product = (await response.json()) as IProduct;
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 16 }}>
           <div class="details__actions">
-            <AddToCartForm client:load />
+            <AddToCartForm product={product} client:load />
           </div>
           <div class="details__description">
             <p>{product.description}</p>

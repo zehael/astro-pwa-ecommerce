@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Space } from 'antd';
 import { addCartItem, CartItem, isCartOpen } from '../../store/cartStore';
 import GoBackButton from '../common/GoBackButton';
+import type { IProduct } from '../../types/product';
 
-const AddToCartForm = () => {
+interface AddToCartFormProps {
+  product: IProduct;
+}
 
-   // we'll hardcode the item info for simplicity!
-   const hardcodedItemInfo: CartItem = {
-    id: 'astronaut-figurine',
-    name: 'Astronaut Figurine',
-    imageSrc: '/images/astronaut-figurine.png',
-    quantity: 1,
-  }
+const AddToCartForm: FC<AddToCartFormProps> = ({ product }) => {
 
   function addToCart(e: React.MouseEvent) {
     e.preventDefault();
     isCartOpen.set(true);
-    addCartItem(hardcodedItemInfo);
+    const cartItem = createCartItemByProduct();
+    addCartItem(cartItem);
+  }
+
+  function createCartItemByProduct(): CartItem {
+    return {
+      id: product.id,
+      name: product.title,
+      imageSrc: product.image,
+      quantity: 1
+    }
   }
 
   return (
