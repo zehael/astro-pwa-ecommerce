@@ -2,6 +2,7 @@
 import AppNavigation from "../components/app/AppNavigation";
 import "antd/dist/reset.css";
 import "/src/styles/main.scss";
+import CartDrawer from "../components/cart/CartDrawer";
 
 export interface Props {
   title: string;
@@ -40,6 +41,7 @@ const { title, pageName } = Astro.props;
     <main>
       <slot />
     </main>
+    <CartDrawer client:load />
     <footer class="footer">
       <div class="container">
 				<div class="footer__content">
