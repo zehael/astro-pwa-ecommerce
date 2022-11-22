@@ -14,28 +14,27 @@
        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" />
 </p>
 
-## 🚀 Run Backend
+## 🚀 Run backend
+#### cd /backend
 ```
-cd /backend
 ├── backend/
 ├── src/
 │   └── pages/
 │       └── index.astro
 └── package.json
 ```
-
+#### install packages and run strapi
 ```
 yarn install
 yarn develop
 ```
-
-Strapi admin creds:
+#### Strapi admin creds:
 ```
 Admin
 Admin111
 ```
 
-## 🧞 Run frontend with commands
+## 🧞 Run frontend
 
 All commands are run from the root of the project, from a terminal:
 
