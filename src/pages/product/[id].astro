@@ -2,33 +2,47 @@
 import { Card, Col, Row } from "antd";
 import AddToCartForm from "../../components/product/AddToCartForm";
 import Layout from "../../layouts/Layout.astro";
+import { getProductById } from "../../lib/api";
 import type { IProduct } from "../../types/product";
 
 const { id } = Astro.params;
+
 // const response = await fetch('https://fakestoreapi.com/products/' + {id});
 // const product = (await response.json()) as IProduct;
 
-console.log("id is", id);
-const response = await fetch('https://fakestoreapi.com/products/' + id);
-const product = (await response.json()) as IProduct;
+let product = null;
+let imgPath = "";
+if (id) {
+  product = await getProductById(id);
+  imgPath =
+    import.meta.env.PUBLIC_API_HOST +
+    product.attributes.image.data?.attributes.url;
+}
 ---
 
 <Layout title={`Prdouct is ${id}`} pageName="products">
   <div class="container">
     <div class="mt-5 page details">
-      <h1>Product is {product?.title}</h1>
+      <h1>{product?.attributes.title}</h1>
       <Row gutter={[20, 20]}>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <div class="details__image">
-            <img src={product?.image} alt={product?.title}>
+            <img src={imgPath} alt={product?.attributes.title} />
           </div>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 16 }}>
-          <div class="details__actions mt-5">
-            <AddToCartForm product={product} client:load />
+          {
+            product !== null && (
+              <div class="details__actions mt-5">
+                <AddToCartForm product={product} client:load />
+              </div>
+            )
+          }
+          <div class="details__price mt-4">
+            $ {product?.attributes.price}
           </div>
-          <div class="details__description p-4 mt-5">
-            <p>{product.description}</p>
+          <div class="details__description p-4 mt-3">
+            <p>{product?.attributes.description}</p>
           </div>
         </Col>
       </Row>
@@ -36,28 +50,36 @@ const product = (await response.json()) as IProduct;
   </div>
 </Layout>
 <style lang="scss">
-.details {
-  &__image {
-    width: 100%;
-    height: 40rem;
-    margin-top: 3rem;
-
-    img {
-      display: block;
+  .details {
+    &__image {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      height: 40rem;
+      margin-top: 6rem;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &__description {
+      margin-top: 3rem;
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    &__price {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 1.6rem;
+      font-weight: 900;
     }
   }
-
-  &__description {
-    margin-top: 3rem;
-  }
-
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-}
 </style>

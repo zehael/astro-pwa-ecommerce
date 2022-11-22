@@ -1,7 +1,18 @@
 export interface IProduct {
   id: number;
-  title: string;
-  price: number;
-  image: string;
-  description: string;
+  attributes: {
+    title: string;
+    price: number;
+    image: {
+      data: IImage | null;
+    };
+    description: string;
+  };
+}
+
+export interface IImage {
+  id: number;
+  attributes: {
+    url: string;
+  };
 }

@@ -1,10 +1,11 @@
 import type { IProduct } from "../../types/product";
-import type { IAuthRespoonse } from "../../types/response";
+import type { IAuthRespoonse, IProductResponse, IProductResponseOfOne } from "../../types/response";
+import { fetchProductsQuery } from "./queries";
 
-const apiHost = import.meta.env.PUBLIC_API_URL;
+const apiUrl = import.meta.env.PUBLIC_API_HOST + '/api';
 
 const get = (apiPath: string, token?: string) => {
-  const url = apiHost + apiPath;
+  const url = apiUrl + apiPath;
   console.log("[FETCH][GET]: ", url);
 
   const headers: HeadersInit = {
@@ -22,7 +23,7 @@ const get = (apiPath: string, token?: string) => {
 };
 
 const post = (apiPath: string, body: any, token?: string) => {
-  const url = apiHost + apiPath;
+  const url = apiUrl + apiPath;
   console.log("[FETCH][POST]: ", url);
 
   const headers: HeadersInit = {
@@ -47,8 +48,15 @@ export function checkAuth() {
 }
 
 export async function getProducts(): Promise<IProduct[]> {
-  const resp = await get("/products");
-  return (await resp.json()) as IProduct[];
+  const resp = await get(`/products?${fetchProductsQuery}`);
+  const data = (await resp.json()) as IProductResponse;
+  return data.data;
+}
+
+export async function getProductById(id: number | string) {
+  const resp = await get(`/products/${id}?${fetchProductsQuery}`);
+  const data = (await resp.json()) as IProductResponseOfOne;
+  return data.data;
 }
 
 export async function registerUser(userData: any) {

@@ -1,5 +1,5 @@
 import { Button, Card, Drawer, Empty, Popconfirm } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
 import { addCartItem, cartItems, isCartOpen } from "../../store/cartStore";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -8,6 +8,11 @@ import CartQtyHandler from "./CartQtyHandler";
 const CartDrawer = () => {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
+
+  // TO-DO: update cart items on changed by client;
+  // useEffect(() => {
+  //   console.log("cart item is changed", $cartItems)
+  // }, [$cartItems]);
 
   const showDrawer = () => {
     isCartOpen.set(true);
