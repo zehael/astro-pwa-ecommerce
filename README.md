@@ -2,7 +2,7 @@
 
 <p align="center">
   <b>Written on Astro Framwework (SSR mode) mode.</b> <br /><br />
-  <img align="center" style="margin-right: 15px" width="50" src="https://astro.build/assets/press/full-logo-light.png" alt="Astro" />
+  <img align="center" style="margin-right: 15px" width="50" src="https://astro.build/assets/press/logomark-light.png" alt="Astro" />
   <img align="center" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
        alt="" />
   <img align="center" style="margin-right: 15px" height="50"
