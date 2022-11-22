@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_cart_carts",
+  "info": {
+    "displayName": "Cart",
+    "icon": "shopping-cart"
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  }
+}

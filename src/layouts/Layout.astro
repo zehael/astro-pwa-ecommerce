@@ -12,14 +12,7 @@ export interface Props {
 }
 
 const { title, pageName } = Astro.props;
-const $isAuth = true;
-
-const checkUserIsAuth = async (): Promise<boolean> => {
-  const isAuth = await checkAuth();
-  return isAuth;
-}
-
-const isAuth = await checkUserIsAuth();
+const myProp = '';
 ---
 
 <!DOCTYPE html>
@@ -41,12 +34,16 @@ const isAuth = await checkUserIsAuth();
     <!-- <script is:inline src="/assets/plugins/global/plugins.bundle.js" />
 		<script is:inline src="/assets/js/scripts.bundle.js" /> -->
     <title>{title}</title>
+    <script is:inline>
+      const isAuth = localStorage.getItem('token');
+      console.log("is auth", isAuth);
+    </script>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="header__content">
-          <AppNavigation client:load pageName={pageName} isAuth={isAuth} />
+          <AppNavigation pageName={pageName} />
           <CartInHeader client:load />
         </div>
       </div>

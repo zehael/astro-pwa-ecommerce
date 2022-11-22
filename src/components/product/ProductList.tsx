@@ -10,7 +10,7 @@ interface ProductListProps {
 const ProductList: FC<ProductListProps> = ({ products }) => {
   return (
     <Row gutter={[20, 20]}>
-      {products.map((product) => (
+      {products && products.map((product) => (
         <Col key={product.id} xs={{ span: 24 }} md={{ span: 8 }}>
           <ProductCard product={product} />
         </Col>

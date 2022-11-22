@@ -1,9 +1,19 @@
 import { Form, Input, Checkbox, Button } from "antd";
 import React from "react";
+import { authUser } from "../../lib/api";
+import { isAuth, token } from "../../store/authStore";
 
 const LoginForm = () => {
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     console.log("Success:", values);
+    try {
+      const resp = await authUser(values);
+      token.set(String(resp?.jwt));
+      isAuth.set(true);
+      window.location.href = '/';
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -21,9 +31,9 @@ const LoginForm = () => {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          label="Username / Email"
+          name="identifier"
+          rules={[{ required: true, message: "Is required" }]}
         >
           <Input />
         </Form.Item>
@@ -40,6 +50,12 @@ const LoginForm = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <span>
+            Don't have an account yet? Please{" "}
+            <a href="/auth/register">register</a>!
+          </span>
         </Form.Item>
       </Form>
     </div>
