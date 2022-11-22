@@ -1,34 +1,41 @@
-# Astro Starter Kit: Minimal
+# MPA app on Astro & Strapi (for e-commerce)
 
+<p align="center">
+  <b>Written on Astro Framwework (SSR mode) mode.</b> <br /><br />
+  <img align="center" style="margin-right: 15px" width="50" src="https://astro.build/assets/press/full-logo-light.png" alt="Astro" />
+  <img align="center" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+       alt="" />
+  <img align="center" style="margin-right: 15px" height="50"
+       src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" />
+  <img align="center" style="margin-right: 15px"
+       src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png" alt=""
+       height="50" />
+  <img align="center" style="margin-right: 15px" width="50"
+       src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" />
+</p>
+
+## 🚀 Run Backend
 ```
-npm create astro@latest -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/minimal)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
+cd /backend
+├── backend/
 ├── src/
 │   └── pages/
 │       └── index.astro
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```
+yarn install
+yarn develop
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Strapi admin creds:
+```
+Admin
+Admin111
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
+## 🧞 Run frontend with commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -40,7 +47,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`      | Preview your build locally, before deploying     |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
