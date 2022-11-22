@@ -16,12 +16,13 @@
 </p>
 
 ## 🚀 Run backend
-#### cd /backend
+#### cd /server
+#### Rename .env.example to .env
 ```
-├── backend/
-├── src/
-│   └── pages/
-│       └── index.astro
+├── server/
+│   └── .env
+│   └── package.json
+└── src/
 └── package.json
 ```
 #### install packages and run strapi
@@ -36,7 +37,14 @@ Admin111
 ```
 
 ## 🧞 Run frontend
-
+#### Rename .env.example to .env
+```
+├── src/
+│   └── pages/
+│       └── index.astro
+└── .env
+```
+#### Instal packages and run project
 All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                           |
