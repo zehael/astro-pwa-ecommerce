@@ -1,4 +1,5 @@
 # MPA app on Astro & Strapi (for e-commerce)
+![gif1](https://user-images.githubusercontent.com/6964795/203263808-aefa0391-8445-4497-ba45-871f476bc171.gif)
 
 <p align="center">
   <b>Written on Astro Framwework (SSR mode) mode.</b> <br /><br />
