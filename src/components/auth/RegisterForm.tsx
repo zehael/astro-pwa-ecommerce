@@ -5,7 +5,6 @@ import { token, isAuth } from "../../store/authStore";
 
 const RegisterForm = () => {
   const onFinish = async (values: any) => {
-    console.log("Success:", values);
     try {
       const resp = await registerUser(values);
       token.set(String(resp?.jwt));

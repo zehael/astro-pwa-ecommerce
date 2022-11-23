@@ -8,7 +8,6 @@ import {
 import { Menu } from "antd";
 import type { MenuProps } from "antd";
 import { useStore } from "@nanostores/react";
-import { isAuth } from "../../store/authStore";
 
 const items: MenuProps["items"] = [
   {
@@ -38,27 +37,27 @@ interface AppNavigationProps {
 }
 
 const AppNavigation: FC<AppNavigationProps> = ({ pageName }) => {
-  const $isAuth = useStore(isAuth);
-  const navItems = useMemo<MenuProps["items"]>(() => {
+  const getNavItems = () => {
     // const authKeys = ["login", "register"];
-    // if ($isAuth) {
-    //   return items.filter((item) => !authKeys.includes(String(item?.key)));
-    // }
-
-    // if (!$isAuth) {
+    // const isAuth = localStorage.getItem("isAuth");
+    // if (!isAuth) {
     //   return items.filter((item) => authKeys.includes(String(item?.key)));
     // }
 
+    // return items.filter((item) => !authKeys.includes(String(item?.key)));
+
     return items;
-  }, []);
+  };
 
   return (
-    <Menu
-      mode="horizontal"
-      defaultSelectedKeys={["products"]}
-      selectedKeys={[pageName]}
-      items={navItems}
-    />
+    <nav>
+      <Menu
+        mode="horizontal"
+        defaultSelectedKeys={["products"]}
+        selectedKeys={[pageName]}
+        items={getNavItems()}
+      />
+    </nav>
   );
 };
 

@@ -9,11 +9,6 @@ const CartDrawer = () => {
   const $isCartOpen = useStore(isCartOpen);
   const $cartItems = useStore(cartItems);
 
-  // TO-DO: update cart items on changed by client;
-  // useEffect(() => {
-  //   console.log("cart item is changed", $cartItems)
-  // }, [$cartItems]);
-
   const showDrawer = () => {
     isCartOpen.set(true);
   };

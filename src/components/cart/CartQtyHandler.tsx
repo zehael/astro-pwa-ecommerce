@@ -17,7 +17,6 @@ const CartQtyHandler: FC<CartQtyHandlerProps> = ({ cartItem }) => {
     }
 
     if (value >= min && value <= max) {
-      console.log('value', value);
       addCartItem({...cartItem, quantity: value})
     }
   };

@@ -4,7 +4,6 @@ import "antd/dist/reset.css";
 import "/src/styles/main.scss";
 import CartDrawer from "../components/cart/CartDrawer";
 import CartInHeader from "../components/cart/CartInHeader";
-import { checkAuth } from "../lib/api";
 
 export interface Props {
   title: string;
@@ -12,7 +11,6 @@ export interface Props {
 }
 
 const { title, pageName } = Astro.props;
-const myProp = '';
 ---
 
 <!DOCTYPE html>
@@ -34,16 +32,12 @@ const myProp = '';
     <!-- <script is:inline src="/assets/plugins/global/plugins.bundle.js" />
 		<script is:inline src="/assets/js/scripts.bundle.js" /> -->
     <title>{title}</title>
-    <script is:inline>
-      const isAuth = localStorage.getItem('token');
-      console.log("is auth", isAuth);
-    </script>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="header__content">
-          <AppNavigation pageName={pageName} />
+          <AppNavigation client:load pageName={pageName} />
           <CartInHeader client:load />
         </div>
       </div>

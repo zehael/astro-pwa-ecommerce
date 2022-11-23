@@ -16,8 +16,6 @@ const get = (apiPath: string, token?: string) => {
     headers["Authorization"] = "Bearer " + token;
   }
 
-  console.log('headers for fetch', headers);
-
 
   return fetch(url, { headers }).then((resp) => resp);
 };

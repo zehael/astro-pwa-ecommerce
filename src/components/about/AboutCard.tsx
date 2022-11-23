@@ -1,5 +1,5 @@
 import { SendOutlined } from "@ant-design/icons";
-import { Button, Card } from "antd";
+import { Button as AntButton, Card } from "antd";
 import React from "react";
 
 const { Meta } = Card;
@@ -17,7 +17,7 @@ const AboutCard = () => {
       }
       actions={[
         <a key="Telegram" href='https://t.me/zehael' target='_blank'>
-          <Button shape="circle" type="link" icon={<SendOutlined />} />
+          <AntButton shape="circle" type="link" icon={<SendOutlined />} />
           t.me/zehael
         </a>,
       ]}

@@ -5,7 +5,6 @@ import { isAuth, token } from "../../store/authStore";
 
 const LoginForm = () => {
   const onFinish = async (values: any) => {
-    console.log("Success:", values);
     try {
       const resp = await authUser(values);
       token.set(String(resp?.jwt));
@@ -19,6 +18,7 @@ const LoginForm = () => {
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div>
       <Form
